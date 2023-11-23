@@ -47,9 +47,9 @@ A Laravel application that connects to the Kanye West Quotes API.
     Your application should now be running at [http://localhost:8000](http://localhost:8000).
 
 7. **Add API Token in Env file:**
-
-API_TOKEN="zeeshan-khalid"
-
+    ```bash
+    API_TOKEN="zeeshan-khalid"
+    ```
 
 ## API Endpoints
 
