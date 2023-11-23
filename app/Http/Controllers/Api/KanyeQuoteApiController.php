@@ -29,7 +29,6 @@ class KanyeQuoteApiController extends Controller
     public function refreshQuotes()
     {
         try {
-            // Fetch and cache new quotes (refresh the cache)
             $quotes = $this->quoteManager->getQuotes(true);
 
             return response()->json(['quotes' => $quotes], 200);

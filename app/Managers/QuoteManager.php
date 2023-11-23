@@ -12,19 +12,15 @@ class QuoteManager
     public function getQuotes($refresh = false)
     {
         try {
-            // Check if cache needs to be refreshed
             if ($refresh) {
                 Cache::forget('kanye.quotes');
             }
 
-            // Check if quotes are cached
             if (Cache::has('kanye.quotes')) {
                 return Cache::get('kanye.quotes');
             }
 
             $quotes = [];
-
-            // Fetch quotes from the API (make 5 requests to gather 5 quotes)
             for ($i = 0; $i < 5; $i++) {
                 $response = Http::get($this->apiUrl . 'quotes');
 
@@ -35,12 +31,10 @@ class QuoteManager
                 }
             }
 
-            // Cache quotes for 1 hour (adjust as needed)
             Cache::put('kanye.quotes', $quotes, now()->addHour());
 
             return $quotes;
         } catch (\Exception $e) {
-            // Log or handle the exception as needed
             throw $e;
         }
     }
